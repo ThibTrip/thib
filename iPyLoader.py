@@ -1,3 +1,22 @@
+"""This module allows you to import a .ipynb jupyter notebook the same way you'd
+import a .py module.
+
+Source:
+https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html
+
+Usage:
+    # if iPyLoader is located on another directory:
+    # import sys
+    # sys.path.append('A:/my_directory/')
+
+    import iPyLoader
+    import my_notebook
+
+    # this works as well:
+    from my_notebook import this_function
+
+"""
+
 import io, os, sys, types
 from IPython import get_ipython
 from nbformat import current
