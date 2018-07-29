@@ -1,8 +1,10 @@
 """This module allows you to import a .ipynb jupyter notebook the same way you'd
 import a .py module.
 
-Source:
+Sources:
 https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html
+https://stackoverflow.com/questions/50382248/how-can-i-import-one-jupyter-notebook-into-another
+
 
 Usage:
     # if iPyLoader is located on another directory:
@@ -19,7 +21,7 @@ Usage:
 
 import io, os, sys, types
 from IPython import get_ipython
-from nbformat import current
+from nbformat import read
 from IPython.core.interactiveshell import InteractiveShell
 
 
@@ -32,7 +34,7 @@ def find_notebook(fullname, path=None):
     """
     name = fullname.rsplit('.', 1)[-1]
     if not path:
-        path = sys.path #EDITED HERE RATHER THAN CURRENT DIRECTORY
+        path = sys.path # Edited this here rather than using current directory
     for d in path:
         nb_path = os.path.join(d, name + ".ipynb")
         if os.path.isfile(nb_path):
@@ -43,20 +45,20 @@ def find_notebook(fullname, path=None):
             return nb_path
 
 class NotebookLoader(object):
-    """Module Loader for IPython Notebooks"""
+    """Module Loader for Jupyter Notebooks"""
     def __init__(self, path=None):
         self.shell = InteractiveShell.instance()
         self.path = path
 
     def load_module(self, fullname):
         """import a notebook as a module"""
-        path = find_notebook(fullname)
+        path = find_notebook(fullname, self.path)
 
-        print ("importing IPython notebook from %s" % path)
+        print ("importing Jupyter notebook from %s" % path)
 
         # load the notebook object
         with io.open(path, 'r', encoding='utf-8') as f:
-            nb = current.read(f, 'json')
+            nb = read(f, 4)
 
 
         # create the module and add it to sys.modules
@@ -74,10 +76,10 @@ class NotebookLoader(object):
         self.shell.user_ns = mod.__dict__
 
         try:
-          for cell in nb.worksheets[0].cells:
-            if cell.cell_type == 'code' and cell.language == 'python':
+          for cell in nb.cells:
+            if cell.cell_type == 'code':
                 # transform the input to executable Python
-                code = self.shell.input_transformer_manager.transform_cell(cell.input)
+                code = self.shell.input_transformer_manager.transform_cell(cell.source)
                 # run the code in themodule
                 exec(code, mod.__dict__)
         finally:
@@ -85,7 +87,7 @@ class NotebookLoader(object):
         return mod
 
 class NotebookFinder(object):
-    """Module finder that locates IPython Notebooks"""
+    """Module finder that locates Jupyter Notebooks"""
     def __init__(self):
         self.loaders = {}
 
