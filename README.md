@@ -1,1 +1,1 @@
-Here you'll find some modules, sample data and documents I use to process individual related data with pandas.
+This repository is meant to present my work with individual-related data at Tripicchio AG, an E-Mail Marketing company in Freiburg, Germany. I will upload some example modules and a presentation using a jupyter notebook.
