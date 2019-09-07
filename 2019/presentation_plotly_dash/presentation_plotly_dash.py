@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Data visualization and web apps with Dash
+# # Data visualization and web apps with Dash
+# 
+# ![Dash example](https://user-images.githubusercontent.com/1280389/30086123-97c58bde-9267-11e7-98a0-7f626de5199a.gif)
+# 
+# _Example dash app found on https://github.com/plotly/dash_
 
 # # My quest for the ideal data vizualization software
 
@@ -61,10 +65,6 @@ get_ipython().run_line_magic('run', 'dual_axis_multitype_chart.py')
 # * You can integrate plotly charts in a Dash app (as shown in the gif below)
 # * Dash is used to create an app layout (buttons, dropdowns, text, charts in combination with plotly, ...) and manage user interactions
 # * Dash is based (amongst other) on Flask
-
-# ![Dash example](https://user-images.githubusercontent.com/1280389/30086123-97c58bde-9267-11e7-98a0-7f626de5199a.gif)
-# 
-# Source: https://github.com/plotly/dash
 
 # # Dash and plotly crash course
 # 
@@ -362,7 +362,7 @@ if __name__ == '__main__':
 # 
 # ### dash_database (that's from me 😄)
 # 
-# This is for managing user data in a dash app.
+# This is for managing user data in a dash app (so for instance sharing data between callbacks). More info and usage can be found in the [repository](https://github.com/ThibTrip/dash_database).
 # 
 # It is not on PyPI (it's planned) so you'll have to clone the repo.
 # 
@@ -375,7 +375,7 @@ if __name__ == '__main__':
 
 # # Deployment
 # 
-# Well Andrew T Baker has done a great [video](https://www.youtube.com/watch?v=vGphzPLemZE) on deploying a python web app at pycon you should totally watch it.
+# Well Andrew T Baker has done a great [video](https://www.youtube.com/watch?v=vGphzPLemZE) on deploying a python web app at pycon. You should definitely watch it.
 
 # # Other usage examples for Dash
 # 
