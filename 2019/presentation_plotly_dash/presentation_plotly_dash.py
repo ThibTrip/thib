@@ -11,27 +11,27 @@
 
 # ## How I discovered Dash
 # 
-# I've had to produce quite complex charts for my work. I have mostly used Tableau for it and became fed up with it.
+# I have had to produce quite complex charts for my work. I have mostly used Tableau for it and became fed up with it.
 # This is why I have come up with a checklist of conditions that I tested against many other vizualization software.
 
-# - [ ] no messing around with CSS, HTML or Javascript and what not which would consume 90% of the time (I'm exagerating a bit)
+# - [ ] no messing around with CSS, HTML or Javascript or any IT tool which would consume 90% of my time (I'm exaggerating a bit)
 # - [ ] interactivity (dynamic data selection and transformation via the use of buttons e.g. a date range)
-# - [ ] programatic or at least very reusable
+# - [ ] programmatic or at least very reusable
 # - [ ] stable!!
 # - [ ] some basic charts available: bar, pie, map, treemap...
 # - [ ] dashboarding (multiple charts on the same page)
-# - [ ] charts crossfiltering which means filtering a chart by clicking/interacting with another one (this is a rare one)
+# - [ ] charts crossfiltering which means filtering a chart by clicking/interacting with another one (this is a rare option)
 # - [ ] quick to use
 # - [ ] can read from PostgreSQL
 # - [ ] bonus: free and open-source
 
 # ### Non programmatic solutions
 # 
-# While [Tableau](https://www.tableau.com/fr-fr) checks all the boxes except beeing free and open source (also the reusable part does not work so well), I have found it to be slow, not reusable, flexible and stable enough. It is also hard to document your work.
+# Although [Tableau](https://www.tableau.com/fr-fr) ticks all boxes except being free and open source (also the reusable part does not work so well), I have found it to be slow, not reusable, as well as not flexible and stable enough. It is also hard to document your work with it.
 # 
 # I tested [Metabase](https://github.com/metabase/metabase) a little a while ago and found it really great. However it does not support charts crossfiltering (as of 2019-07-09 at least).
 # 
-# [Microsoft PowerBI](https://powerbi.microsoft.com) seems to check all the boxes except for beeing free and open source. I have too little knowledge of it but my colleagues have shown me very cool dashboards.
+# [Microsoft PowerBI](https://powerbi.microsoft.com) seems to tick all the boxes except for beeing free and open source. I have very limited knowledge of it but my colleagues have shown me very cool dashboards.
 
 # ### Programmatic solutions
 # 
@@ -62,13 +62,13 @@ get_ipython().run_line_magic('run', 'dual_axis_multitype_chart.py')
 # <cite>Plotly's team maintains the fastest growing open-source visualization libraries for R, Python, and JavaScript.</cite>
 # 
 # * Dash is made by the company Plotly
-# * You can integrate plotly charts in a Dash app (as shown in the gif below)
+# * You can integrate Plotly charts in a Dash app (as shown in the gif below)
 # * Dash is used to create an app layout (buttons, dropdowns, text, charts in combination with plotly, ...) and manage user interactions
 # * Dash is based (amongst other) on Flask
 
-# # Dash and plotly crash course
+# # Dash and Plotly crash course
 # 
-# This is a very very quick tutorial to demonstrate how dash works. If you want to know more you should definitely check out the [offical tutorial](https://dash.plot.ly/) it is quite well made.
+# This is a very very quick tutorial to demonstrate how Dash works. If you want to know more you should definitely check out the [official tutorial](https://dash.plot.ly/) which is quite well made.
 
 # ## Installing dash
 # ```
@@ -88,7 +88,7 @@ get_ipython().run_line_magic('run', 'dual_axis_multitype_chart.py')
 # ```
 # 
 # * dash contains the Dash class (object where you will put all your app layout and interactions and with which you'll run the app)
-# * dash_core_components if for constructing dash specific components such as markdown
+# * dash_core_components is for constructing dash specific components such as markdown
 # * dash_html_components is for constructing html elements such as inputs
 # * dash_table is for displaying tables
 
@@ -103,11 +103,11 @@ get_ipython().run_line_magic('run', 'dual_axis_multitype_chart.py')
 # conda install -c plotly
 # ```
 
-# ## Let's make hello world in dash
+# ## Let's make "hello world" in Dash
 # 
 # This will show you how to:
-# * create a dash app
-# * create the layout of a dash app
+# * create a Dash app
+# * create the layout of a Dash app
 # * run the app
 
 # In[ ]:
@@ -133,7 +133,7 @@ if __name__ == '__main__':
     app.run_server(debug=False)  # debug must be False for Jupyter Notebooks
 
 
-# ## How to add user interactions to a dash app
+# ## How to add user interactions to a Dash app
 # 
 # Example of a button generating a random number
 
@@ -195,7 +195,7 @@ if __name__ == '__main__':
     app.run_server(debug=False)
 
 
-# ## Creating a simple plotly chart
+# ## Creating a simple Plotly chart
 # 
 # Here is the "traditional way" of using plotly.
 # 
@@ -234,17 +234,17 @@ fig = go.Figure(data = [trace], layout = layout)
 iplot(fig)
 
 
-# ## How to put a plotly chart inside a dash app and interact with it
+# ## How to put a Plotly chart inside a Dash app and interact with it
 # 
-# One of the major benefits of Dash is that it uses Python. This means you can use any Python library you want for your app (for the backend at least, since the frontend so what the user sees needs to be interpretable by the browser).
+# One of the major benefits of Dash is that it uses Python. This means you can use any Python library you want for your app (for the backend at least, since the frontend - so what the user sees - needs to be interpretable by the browser).
 # 
 # I find this extremely exciting since for instance I can use pandas 🐼 library for data wrangling*. It is extremely powerful and fast. Its main object is the pandas DataFrame (sort of a table object). It also reads from and writes to lots of formats (json, csv, excel, SQL, HDF5, parquet, feather, pickle...).
 # 
 # I am even using my own libraries in one of my apps (see chapter below "Web applications with Dash").
 # 
-# Note that in this case all users of the app receive a version of the same data. If you have different data for all users then you will need to manage user's data and it gets a little bit more complicated (we will see an example of it later with my data cleaning app).
+# Note that in this case all users of the app receive a version of the same data. If you have different data for each user then you will need to manage user's data and it gets a little bit more complicated (we will see an example of it later with my data cleaning app).
 # 
-# _*means any data operation so aggregating, transorming, cleaning..._
+# _*means any data operation so aggregating, transforming, cleaning..._
 
 # In[ ]:
 
@@ -342,11 +342,11 @@ if __name__ == '__main__':
 
 # ## Additional libraries used by the data cleaning app
 # 
-# I highly recommand these libraries!
+# I highly recommend these libraries!
 # 
 # ### dash-bootstrap-components
 # 
-# <cite>dash-bootstrap-components reduces boilerplate by providing standard layouts and high-level components</cite>
+# <cite>[dash-bootstrap-components](https://github.com/facultyai/dash-bootstrap-components) reduces boilerplate by providing standard layouts and high-level components</cite>
 # 
 # ```
 # pip install dash-bootstrap-components
@@ -360,22 +360,20 @@ if __name__ == '__main__':
 # ```
 # 
 # 
-# ### dash_database (that's from me 😄)
+# ### dash_database (it's from me 😄)
 # 
-# This is for managing user data in a dash app (so for instance sharing data between callbacks). More info and usage can be found in the [repository](https://github.com/ThibTrip/dash_database).
+# This is for managing user data in a Dash app (so for instance sharing data between callbacks). More info and usage can be found in the [repository](https://github.com/ThibTrip/dash_database).
 # 
-# It is not on PyPI (it's planned) so you'll have to clone the repo.
+# 
+# Installation with:
 # 
 # ```
-# # clone repository
-# git clone https://github.com/ThibTrip/dash_database.git
-# # install dash_database
-# pip install ./dash_database  # do not forget ./ (from local folder and not from Python Package Index)
+# pip install dash-database
 # ```
 
 # # Deployment
 # 
-# Well Andrew T Baker has done a great [video](https://www.youtube.com/watch?v=vGphzPLemZE) on deploying a python web app at pycon. You should definitely watch it.
+# Well Andrew T Baker has done a great [video](https://www.youtube.com/watch?v=vGphzPLemZE) on deploying a Python web app at pycon. You should definitely watch it.
 
 # # Other usage examples for Dash
 # 
