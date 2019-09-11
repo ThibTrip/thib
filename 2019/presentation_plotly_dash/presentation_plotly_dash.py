@@ -14,16 +14,16 @@
 # I have had to produce quite complex charts for my work. I have mostly used Tableau for it and became fed up with it.
 # This is why I have come up with a checklist of conditions that I tested against many other vizualization software.
 
-# - [ ] no messing around with CSS, HTML or Javascript or any IT tool which would consume 90% of my time (I'm exaggerating a bit)
-# - [ ] interactivity (dynamic data selection and transformation via the use of buttons e.g. a date range)
-# - [ ] programmatic or at least very reusable
-# - [ ] stable!!
-# - [ ] some basic charts available: bar, pie, map, treemap...
-# - [ ] dashboarding (multiple charts on the same page)
-# - [ ] charts crossfiltering which means filtering a chart by clicking/interacting with another one (this is a rare option)
-# - [ ] quick to use
-# - [ ] can read from PostgreSQL
-# - [ ] bonus: free and open-source
+# - no messing around with CSS, HTML or Javascript or any IT tool which would consume 90% of my time (I'm exaggerating a bit)
+# - interactivity (dynamic data selection and transformation via the use of buttons e.g. a date range)
+# - programmatic or at least very reusable
+# - stable!!
+# - some basic charts available: bar, pie, map, treemap...
+# - dashboarding (multiple charts on the same page)
+# - charts crossfiltering which means filtering a chart by clicking/interacting with another one (this is a rare option)
+# - quick to use
+# - can read from PostgreSQL
+# - bonus: free and open-source
 
 # ### Non programmatic solutions
 # 
@@ -42,6 +42,8 @@
 # We will see the advantages and disadvantages of using Dash with the examples through the presentation.
 
 # ## Some dashboard examples using Dash
+# 
+# If running the Jupyter Notebook you can just interrupt the kernel to run the next app.
 
 # In[ ]:
 
@@ -305,14 +307,15 @@ def create_update_chart_callback(app):
             x_axis_format = {'type': 'category', 'tickformat': '%Y', 'title':'Year'}
         else:
             raise ValueError(f'Unexpected value for period ({period})')
+            
 
         # select stock then group by grouper (double the brackets before sum so a DataFrame is always returned and not a Series)
         # IMPORTANT: if you want to modify the original object do a copy before: df.copy(deep = True)
-        new_df = (df.loc[df['Stock'].isin(stocks),:]                  .groupby(grouper)[['Volume']].sum()                  .reset_index()) # reset index so we can select 'Date'
-
+        new_df = (df.loc[df['Stock'].isin(stocks),:]                  .groupby(grouper)[['Volume']].sum()                  .reset_index()) # reset index so we can clearly show that we select 'Date' instead of writing "new_df.index"
+        
         # create a figure
         ## create traces
-        traces = [go.Bar(x = new_df['Date'], y = new_df['Volume'])]
+        trace = go.Bar(x = new_df['Date'], y = new_df['Volume'])
 
         ## create layout
         layout = go.Layout(title = 'Stocks', 
@@ -320,7 +323,7 @@ def create_update_chart_callback(app):
                            xaxis = x_axis_format,
                            yaxis = {'title':'Volume'})
 
-        fig = go.Figure(data = traces, layout = layout)
+        fig = go.Figure(data = [trace], layout = layout)
 
         return fig
 
@@ -332,21 +335,25 @@ if __name__ == '__main__':
     app.run_server(debug=False)
 
 
+# # Sharing data between callbacks
+# 
+# See example app in my library [dash_database](https://github.com/ThibTrip/dash_database#example-with-a-dash-app)
+# 
+# redis is also a good option but you will have to install it, then have a server running and write a function for creating json dumps and pickles.
+
 # # Web applications with Dash (example with my data cleaning app)
 
 # ## Live demo 
 # 
-# For people at the presentation in Freiburg only 😉. The code is confidential however I can show this animation of the app below:
-# 
-# <span style="color:red">_ADD GIF HERE_</span>
+# For people at the presentation in Freiburg only 😉
 
 # ## Additional libraries used by the data cleaning app
 # 
 # I highly recommend these libraries!
 # 
-# ### dash-bootstrap-components
+# ### [dash-bootstrap-components](https://github.com/facultyai/dash-bootstrap-components)
 # 
-# <cite>[dash-bootstrap-components](https://github.com/facultyai/dash-bootstrap-components) reduces boilerplate by providing standard layouts and high-level components</cite>
+# <cite>dash-bootstrap-components reduces boilerplate by providing standard layouts and high-level components</cite>
 # 
 # ```
 # pip install dash-bootstrap-components
@@ -360,9 +367,9 @@ if __name__ == '__main__':
 # ```
 # 
 # 
-# ### dash_database (it's from me 😄)
+# ### [dash_database](https://github.com/ThibTrip/dash_database) (it's from me 😄)
 # 
-# This is for managing user data in a Dash app (so for instance sharing data between callbacks). More info and usage can be found in the [repository](https://github.com/ThibTrip/dash_database).
+# This is for managing user data in a Dash app (so for instance sharing data between callbacks). More info and usage can be found in the repository.
 # 
 # 
 # Installation with:
@@ -370,6 +377,10 @@ if __name__ == '__main__':
 # ```
 # pip install dash-database
 # ```
+# 
+# ### [loguru](https://github.com/Delgan/loguru)
+# 
+# A fantastic replacement for the logging library. Saves time and prevents frustration.
 
 # # Deployment
 # 
@@ -382,3 +393,39 @@ if __name__ == '__main__':
 # * Online forms (my colleagues are interested in making a subscription form with Dash or Flask for newsletter)
 # * Webpages or even websites
 # * Reports (for instance https://dash-gallery.plotly.host/dash-financial-report/)
+
+# # Conclusion
+
+# ## Benefits of Dash and Plotly
+
+# 1. both libraries are extremely feature rich
+# 2. extreme flexibility: hook up your own libraries if you want, complex user interactions, dynamical layouts (e.g. choose what to display on a tab based on conditions) etc.
+# 3. only Python is needed
+# 4. You can have many different uses for Dash (data vizualization, data cleaning app as I did, forms, generic webpages...)
+
+# ## Inconvenients (some of those perhaps not completely objective)
+
+# 1. Anything slightly "exotic" with Plotly might require a lot of tinkering with chart properties
+# 2. Dash can get a bit verbose sometimes
+
+# ## Some personal tips for Dash
+
+# * use dash bootstrap components! It saved me a lot of time and looks really nice
+# 
+# * keep it simple
+#     * note down core features and focus on those first
+#     * make a minimalist design (that's also a good idea for the app's user) - one page apps are easier to code for instance and I personally find tabs very practical
+# 
+# * use my library dash_database for sharing data between callbacks<sup>1</sup>
+# 
+# * put your callbacks in functions - as I did in the examples before - so you can import them from other modules
+# 
+# * put the ids of the components with which user will interact in variables as I did in the examples before (this helps organization and troubleshooting)
+# 
+# * if you create your app as a package remember to install it in editable mode e.g. "pip install -e data_cleaner_app" to reflect any changes upon next import
+# 
+# * if doing anything with tables (or arrays in general) pandas is your friend
+# 
+# 
+# 
+# <sup>1</sup>_Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (> 1GB) and/or have a good amount of simultaneous users (> 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash_database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo)._
