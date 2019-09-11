@@ -43,7 +43,9 @@
 
 # ## Some dashboard examples using Dash
 # 
-# If running the Jupyter Notebook you can just interrupt the kernel to run the next app.
+# The two commands below will run two Python scripts in the same folder. If running the Jupyter Notebook you can just interrupt the kernel to run the next app.
+# 
+# If viewing a static version of the notebook (e.g. as an HTML page) you will have to use bash/command line/Powershell and run the commands "python crossfilter_hover.py" and "python dual_axis_multitype_chart.py" for viewing the apps (python or python3 for some environments like Ubuntu by default)
 
 # In[ ]:
 
