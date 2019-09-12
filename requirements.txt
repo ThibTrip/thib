@@ -1,0 +1,7 @@
+# requirements for folder 2019
+pandas
+dash
+dash_core_components as dcc
+dash_html_components as html
+dash-database
+plotly
