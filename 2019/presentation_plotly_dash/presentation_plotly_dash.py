@@ -412,7 +412,7 @@ if __name__ == '__main__':
 
 # ## Some personal tips for Dash
 
-# * use dash bootstrap components! It saved me a lot of time and looks really nice
+# * use dash bootstrap components! It saved me a lot of time and looks really nice. [Dash daq](https://dash.plot.ly/dash-daq) is also interesting.
 # 
 # * take a look at [dash recipes](https://github.com/plotly/dash-recipes). There are many examples available. Unfortunately Dash has changed very fast so some recipes are a bit obsolete. Now that it is above version 1 there should not be any breaking changes (until the next major version) but version 1 was reached only in June.
 # 
@@ -420,16 +420,19 @@ if __name__ == '__main__':
 #     * note down core features and focus on those first
 #     * make a minimalist design (that's also a good idea for the app's user) - one page apps are easier to code for instance and I personally find tabs very practical
 # 
-# * use my library dash_database for sharing data between callbacks<sup>1</sup>
+# * you can use my library dash_database for sharing data between callbacks at least for testing (it's convenient). Please pay attention to the **[caveats/inconvenients](https://github.com/ThibTrip/dash_database#caveatsinconvenients-of-dash_database)** if you want to use it outside of testing !
 # 
 # * put your callbacks in functions - as I did in the examples before - so you can import them from other modules
 # 
-# * put the ids of the components with which user will interact in variables as I did in the examples before (this helps organization and troubleshooting)
+# * put the ids of the components with which users will interact in variables as I did in the examples before (this helps organization and troubleshooting)
+# 
+# * use a "commons" module in your app to keep track of component ids you want to use in multiple modules (for instance the id of a component that stores a generated session id for each user) and for variables or functions used accross multiple modules
 # 
 # * if you create your app as a package remember to install it in editable mode e.g. "pip install -e data_cleaner_app" to reflect any changes upon next import
 # 
 # * if doing anything with tables (or arrays in general) pandas is your friend
 # 
+# * use debug<sup>1</sup> and hot reloading<sup>1</sup>. There is even a debug interface apparently. I don't have any experience with that so you'll have to dig into it yourself. See this [page](https://dash.plot.ly/devtools).
 # 
 # 
-# <sup>1</sup> _Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (> 1GB) and/or have a good amount of simultaneous users (> 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash_database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo)._
+# 1 <sub>I am not sure how well it plays with Jupyter. Had a few issues last time I tried (was probably at beginning of the year 2019) and ended up cheating a little bit by interrupting/resuming the kernel and using importlib.</sub>

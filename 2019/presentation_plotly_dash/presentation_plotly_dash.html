@@ -13664,7 +13664,7 @@ conda install -c conda-forge dash-table</code></pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>use dash bootstrap components! It saved me a lot of time and looks really nice</p>
+<li><p>use dash bootstrap components! It saved me a lot of time and looks really nice. <a href="https://dash.plot.ly/dash-daq">Dash daq</a> is also interesting.</p>
 </li>
 <li><p>take a look at <a href="https://github.com/plotly/dash-recipes">dash recipes</a>. There are many examples available. Unfortunately Dash has changed very fast so some recipes are a bit obsolete. Now that it is above version 1 there should not be any breaking changes (until the next major version) but version 1 was reached only in June.</p>
 </li>
@@ -13674,18 +13674,22 @@ conda install -c conda-forge dash-table</code></pre>
 <li>make a minimalist design (that's also a good idea for the app's user) - one page apps are easier to code for instance and I personally find tabs very practical</li>
 </ul>
 </li>
-<li><p>use my library dash_database for sharing data between callbacks<sup>1</sup></p>
+<li><p>you can use my library dash_database for sharing data between callbacks at least for testing (it's convenient). Please pay attention to the <strong><a href="https://github.com/ThibTrip/dash_database#caveatsinconvenients-of-dash_database">caveats/inconvenients</a></strong> if you want to use it outside of testing !</p>
 </li>
 <li><p>put your callbacks in functions - as I did in the examples before - so you can import them from other modules</p>
 </li>
-<li><p>put the ids of the components with which user will interact in variables as I did in the examples before (this helps organization and troubleshooting)</p>
+<li><p>put the ids of the components with which users will interact in variables as I did in the examples before (this helps organization and troubleshooting)</p>
+</li>
+<li><p>use a "commons" module in your app to keep track of component ids you want to use in multiple modules (for instance the id of a component that stores a generated session id for each user) and for variables or functions used accross multiple modules</p>
 </li>
 <li><p>if you create your app as a package remember to install it in editable mode e.g. "pip install -e data_cleaner_app" to reflect any changes upon next import</p>
 </li>
 <li><p>if doing anything with tables (or arrays in general) pandas is your friend</p>
 </li>
+<li><p>use debug<sup>1</sup> and hot reloading<sup>1</sup>. There is even a debug interface apparently. I don't have any experience with that so you'll have to dig into it yourself. See this <a href="https://dash.plot.ly/devtools">page</a>.</p>
+</li>
 </ul>
-<p><sup>1</sup> _Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (&gt; 1GB) and/or have a good amount of simultaneous users (&gt; 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash<em>database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo).</em></p>
+<p>1 <sub>I am not sure how well it plays with Jupyter. Had a few issues last time I tried (was probably at beginning of the year 2019) and ended up cheating a little bit by interrupting/resuming the kernel and using importlib.</sub></p>
 
 </div>
 </div>
