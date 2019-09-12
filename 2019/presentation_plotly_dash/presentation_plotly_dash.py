@@ -414,6 +414,8 @@ if __name__ == '__main__':
 
 # * use dash bootstrap components! It saved me a lot of time and looks really nice
 # 
+# * take a look at [dash recipes](https://github.com/plotly/dash-recipes). There are many examples available. Unfortunately Dash has changed very fast so some recipes are a bit obsolete. Now that it is above version 1 there should not be any breaking changes (until the next major version) but version 1 was reached only in June.
+# 
 # * keep it simple
 #     * note down core features and focus on those first
 #     * make a minimalist design (that's also a good idea for the app's user) - one page apps are easier to code for instance and I personally find tabs very practical
@@ -430,4 +432,4 @@ if __name__ == '__main__':
 # 
 # 
 # 
-# <sup>1</sup>_Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (> 1GB) and/or have a good amount of simultaneous users (> 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash_database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo)._
+# <sup>1</sup> _Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (> 1GB) and/or have a good amount of simultaneous users (> 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash_database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo)._

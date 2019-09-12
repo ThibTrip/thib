@@ -13666,6 +13666,8 @@ conda install -c conda-forge dash-table</code></pre>
 <ul>
 <li><p>use dash bootstrap components! It saved me a lot of time and looks really nice</p>
 </li>
+<li><p>take a look at <a href="https://github.com/plotly/dash-recipes">dash recipes</a>. There are many examples available. Unfortunately Dash has changed very fast so some recipes are a bit obsolete. Now that it is above version 1 there should not be any breaking changes (until the next major version) but version 1 was reached only in June.</p>
+</li>
 <li><p>keep it simple</p>
 <ul>
 <li>note down core features and focus on those first</li>
@@ -13683,7 +13685,7 @@ conda install -c conda-forge dash-table</code></pre>
 <li><p>if doing anything with tables (or arrays in general) pandas is your friend</p>
 </li>
 </ul>
-<p><sup>1</sup>_Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (&gt; 1GB) and/or have a good amount of simultaneous users (&gt; 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash<em>database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo).</em></p>
+<p><sup>1</sup> _Please beware that concurrent requests are actually done as a queue. If you are storing big datasets (&gt; 1GB) and/or have a good amount of simultaneous users (&gt; 20) then either consider redis or making one DashDatabase per user could do the trick. If you do that with success please tell me I could rewrite dash<em>database so each user has its own database and we do not loose any convenience in the usage (would probably not work on memory but performance would still be good as seen in the performance tests in the repo).</em></p>
 
 </div>
 </div>
