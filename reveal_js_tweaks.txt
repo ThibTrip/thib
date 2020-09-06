@@ -1,0 +1,21 @@
+<! –– this improves the layout for reveal.js slides ––>
+<style>
+.reveal i {
+    font-size: 1em !important;
+    font-style: italic !important;
+}
+
+.input_area {
+    font-size: 0.8em !important;
+}
+
+.reveal section p {
+    font-size: 0.8em !important;
+}
+
+.reveal section pre code {
+    font-size: 0.7em !important;
+}
+
+</style>
+<script>document.getElementById('body').style.fontSize = "80%";</script>
