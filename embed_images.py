@@ -37,7 +37,7 @@ class ImageEmbedder(cli.Application):
             is_path = src and not ('http' in src_lower or 'www' in src_lower)
             if is_path:
                 logger.info(f'Embedding image "{src}"')
-                media_type = os.path.splitext(src_lower)[-1].lstrip('.').replace('jpg', 'jpeg')
+                media_type = os.path.splitext(src_lower)[-1].lstrip('.').replace('jpg', 'jpeg').replace('svg', 'svg+xml')
 
                 # keep the default FileNotFoundError if the file does note exist that's OK
                 with open(src, "rb") as image_file:
