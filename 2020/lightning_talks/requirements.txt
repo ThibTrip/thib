@@ -1,0 +1,4 @@
+loguru
+npdoc_to_md
+pandas
+plumbum
