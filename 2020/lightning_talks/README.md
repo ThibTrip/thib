@@ -5,7 +5,7 @@
 
 # Creating slides from the notebook
 
-We assume you already have Jupyter Lab or Jupyter Notebook installed. If that is not the case I recommand installing it with by [installing Anaconda](https://docs.anaconda.com/anaconda/install/).
+We assume you already have Jupyter Lab or Jupyter Notebook installed. If that is not the case I recommand installing it by [installing Anaconda](https://docs.anaconda.com/anaconda/install/).
 
 ```
 pip install -r requirements.txt
