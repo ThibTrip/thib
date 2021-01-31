@@ -6,16 +6,21 @@
 }
 
 .input_area {
-    font-size: 0.8em !important;
+    font-size: 0.7em !important;
 }
 
 .reveal section p {
+    font-size: 0.7em !important;
+}
+
+.reveal section li, ul {
     font-size: 0.8em !important;
 }
 
-.reveal section pre code {
-    font-size: 0.7em !important;
+.reveal section pre {
+    font-size: 0.6em !important;
 }
+
 
 </style>
 <script>document.getElementById('body').style.fontSize = "80%";</script>
