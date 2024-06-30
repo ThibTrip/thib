@@ -16,7 +16,7 @@ ipykernel = "^6.29.4"
 pandas = "^2.2.2"
 jiwer = "^3.0.4"
 plumbum = "^1.8.3"
-protobuf = "3.20"
+protobuf = "3.20.2"
 pangres = "^4.2.1"
 ffmpeg = "^1.4"
 whisper-mic = {git = "https://github.com/ThibTrip/whisper_mic.git"}
