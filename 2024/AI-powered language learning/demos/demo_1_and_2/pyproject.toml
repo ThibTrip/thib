@@ -21,7 +21,6 @@ pangres = "^4.2.1"
 ffmpeg = "^1.4"
 whisper-mic = {git = "https://github.com/ThibTrip/whisper_mic.git"}
 ipywidgets = "^8.1.3"
-yt-dlp = "^2024.5.27"
 langchain = "^0.2.1"
 
 
