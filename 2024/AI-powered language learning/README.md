@@ -1,6 +1,6 @@
 # Description
 
-Here are all the resources of my presentation at the [second Python User Group Freiburg meetup at JobRad](https://www.meetup.com/python-user-group-freiburg/events/301044966/)(2024-06-04).
+Here are all the resources of my presentation at the [second Python User Group Freiburg meetup at JobRad](https://www.meetup.com/python-user-group-freiburg/events/301044966/) (2024-06-04).
 
 See slides in file `AI-Powered Language Learning.pdf` and see demos mentioned in the slides in folder `demos` (see also setup below).
 
